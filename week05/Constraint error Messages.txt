@@ -1,0 +1,13 @@
+test 1 : MySQL Error (1048): Column 'dept_name' cannot be null
+test 2: MySQL Error (3819): Check constraint 'chk_credit_units' is violated.
+test 3: MySQL Error (1452): Cannot add or update a child row: a foreign key constraint fails (`sen307_vug_sen_24_12766`.`student`, CONSTRAINT `student_ibfk_1` FOREIGN KEY (`dept_id`) REFERENCES `department` (`dept_id`))
+test 4: MySQL Error (1265): Data truncated for column 'gender' at row 1
+test 5(My turn): MySQL Error (1062): Duplicate entry 'Software Engineering' for key 'department.dept_name'
+
+confirm all the tables are empty: yes, count is 0
+
+Why week 4 differs
+
+My Week 4 diagram had five entities (Department, Student, Lecturer, Course and Enrolment), but the reverse-engineered diagram has six tables, because the Course–Lecturer many-to-many relationship across sessions needed its own junction table, CourseAllocation, alongside Enrolment for Student–Course.
+The Week 4 diagram was a design sketch with loosely defined attributes, while the Workbench diagram comes from the real tables and so shows exact data types, AUTO_INCREMENT keys, UNIQUE and NOT NULL constraints, and DEFAULT values, plus columns added during implementation such as phone, credit_units, academic_session, semester and enrolled_on.
+In the reverse-engineered diagram, every relationship is drawn from an actual FOREIGN KEY constraint as a one-to-many line into the parent table, and the junction tables are identified by their composite UNIQUE keys (for example student_id, course_id, academic_session), where my Week 4 diagram only showed the relationships conceptually.
